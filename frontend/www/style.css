@@ -1,0 +1,211 @@
+/* Base styles */
+body {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+/* Canvas styling */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Square animation container */
+.square {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 255, 0.8) 0%, rgba(0, 0, 0, 0) 70%);
+    box-shadow: 0 0 50px rgb(25, 0, 255), inset 0 0 50px rgb(25, 0, 255);
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.square span:nth-child(1) { animation-delay: 0s; }
+.square span:nth-child(2) { animation-delay: 2s; }
+.square span:nth-child(3) { animation-delay: 4s; }
+
+@keyframes animate {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* Ask text styling */
+.ask-text {
+    position: absolute;
+    bottom: 140px;
+    color: white;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    animation: fadeEffect 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeEffect {
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+/* Input field styling */
+#TextInput {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    padding: 10px 15px;
+    width: 60%;
+    position: fixed;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+#TextInput:hover {
+    border-color: #00ff00;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.input-field {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+    width: 60%;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.input-field:focus {
+    border-color: #00ff00;
+    outline: none;
+    animation: pulse 1s infinite;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Button styling */
+.glow-on-hover {
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    border-radius: 50%;
+}
+
+.glow-on-hover:active {
+    color: #000;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px #00ff00; }
+    50% { box-shadow: 0 0 20px #00ff00; }
+    100% { box-shadow: 0 0 5px #00ff00; }
+}
+
+#canvasOne {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+#chat-container {
+    position: fixed;
+    bottom: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    max-height: 30vh;
+    overflow-y: auto;
+    color: white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.user-message {
+    text-align: right;
+    margin: 5px 0;
+}
+
+.bot-message {
+    text-align: left;
+    margin: 5px 0;
+}

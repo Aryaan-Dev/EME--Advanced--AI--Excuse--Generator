@@ -1,0 +1,8 @@
+python-dotenv
+groq
+pygame
+edge-tts
+pyttsx3
+cohere
+flask
+rich
