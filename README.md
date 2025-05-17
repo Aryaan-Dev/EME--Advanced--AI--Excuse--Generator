@@ -17,7 +17,7 @@ Before you start, make sure you have the following installed on your computer:
 
 ## Screenshots 📸
 
-![Alt text]()
+![interface-EME](https://github.com/Aryaan-Dev/Advanced-AI-Excuse-Generator-EME/blob/3c674c0ec2c0f45f1751c552267f0673f4d995bf/screenshot/EME-interface.png)
 
 ---
 
